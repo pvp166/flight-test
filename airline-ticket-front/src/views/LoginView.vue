@@ -34,6 +34,7 @@
   
 <script>
 import axios from 'axios'
+import { mapActions } from 'vuex';
 export default {
     data() {
         return {
@@ -49,12 +50,9 @@ export default {
 
         }
     },
-    created() {
-
-
-
-    },
+    
     methods: {
+        ...mapActions(['toggleLogin']),
         signup: function (event) {
             event.preventDefault();
             this.$router.push('/register').catch(() => undefined)
@@ -82,7 +80,8 @@ export default {
                     axios.post('http://localhost:8000/auth/login', formData, { headers })
                         .then(response => {
 
-                            window.localStorage.setItem('token', response.data.token)
+                            window.localStorage.setItem('token', response.data.token);
+                            this.toggleLogin(false);
                             this.$router.push('/').catch(() => undefined)
                         })
                         .catch(error => {

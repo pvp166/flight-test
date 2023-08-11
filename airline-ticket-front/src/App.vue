@@ -22,7 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
           </li>
           <li class="nav-item">
 
-            <RouterLink class="nav-link active" aria-current="page" to="/login" v-if="!token">Login</RouterLink>
+            <RouterLink class="nav-link active" aria-current="page" to="/login" v-if="login">Login</RouterLink>
             <RouterLink class="nav-link active" aria-current="page" to="/logout" v-else>Logout</RouterLink>
           </li>
 
@@ -57,5 +57,19 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped></style>
 <script>
-
+import { mapState, mapActions } from 'vuex';
+export default {
+  computed: {
+    ...mapState(['login'])
+  },
+  methods: {
+    ...mapActions(['toggleLogin']),
+    
+  },
+  mounted() {
+    
+    // console.log(Boolean( window.localStorage.getItem('token')))
+    console.log(this.login);
+  }
+}
 </script>
