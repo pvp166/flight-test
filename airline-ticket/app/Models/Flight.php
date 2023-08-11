@@ -12,18 +12,16 @@ class Flight extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
 
-    protected $fillable = [
-        'destination', 'flight_number', 'departure_time', 'arrival_time'
-    ];
+    protected $fillable = ['destination', 'flight_number', 'departure_time'];
     public function extraFees(): BelongsToMany
     {
         return $this->belongsToMany(ExtraFee::class, 'flight_extrafees');
     }
     public function seatTypes(): BelongsToMany {
-        return $this->belongsToMany(SeatType::class, 'flight_seat_prices');
+        return $this->belongsToMany(SeatType::class, 'flight_seat_prices')->withPivot('price');
     }
     public function airline()
     {
-        return $this->belongsTo(Airline::class, 'airline_airline_id');
+        return $this->belongsTo(Airline::class);
     }
 }

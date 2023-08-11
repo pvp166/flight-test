@@ -36,4 +36,10 @@ $router->group(['prefix' => 'info'], function () use ($router) {
     $router->get('all', [
         'uses' => 'FlightController@show'
     ]);
+    $router->post('find', [
+        'uses' => 'FlightController@find'
+    ]);
+    $router->post('detail', [
+        'uses' => 'FlightController@detail'
+    ]);
 });

@@ -22,7 +22,8 @@ class Airline extends Model
     public function extraWeightFee(): BelongsToMany
     {
         return $this->
-        belongsToMany(ExtraWeightFee::class, 'airline_extraweightprice', 'airline_id', 'extraweightprice_id');
+        belongsToMany(ExtraWeightFee::class, 'airline_extraweightprice', 'airline_id', 'extraweightprice_id')
+        ->withPivot('price');
     }
     
 }

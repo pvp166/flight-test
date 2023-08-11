@@ -17,20 +17,25 @@ class Cors
     {
         if($request->isMethod('OPTIONS')) {
             
-            $response = response('', 200);
+            return response('', 200)->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', '*')
+            ->header('Access-Control-Allow-Headers', '*');
         } else {
             // Pass the request to the next middleware
-            $response = $next($request);
+            return $next($request)
+            ->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', '*')
+            ->header('Access-Control-Allow-Headers', '*');
         }
 
         // Adds headers to the response
-        $response->header('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, PATCH, DELETE');
-        $response->header('Access-Control-Allow-Headers', $request->header('Access-Control-Request-Headers'));
-        $response->header('Access-Control-Allow-Origin', '*');
-        
+        // return  $next($request)
+        // ->header('Access-Control-Allow-Origin', '*')
+        // ->header('Access-Control-Allow-Methods', '*')
+        // ->header('Access-Control-Allow-Headers', '*');
 
         // Sends it
-        return $response;
+        
     }
 }
 

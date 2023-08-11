@@ -15,6 +15,6 @@ class SeatType extends Model
 
     public function flights() : BelongsToMany
     {
-        return $this->belongsToMany(Flight::class, 'flight_seat_prices');
+        return $this->belongsToMany(Flight::class, 'flight_seat_prices')->withPivot('price');
     }
 }
