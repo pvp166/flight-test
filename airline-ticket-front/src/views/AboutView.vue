@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <!-- <div class="container">
       <div class="card custom-bg w-75 p-4 d-flex">
         <div class="row">
           <div class="pb-3 h3 text-left">Flight Search &#128747;</div>
@@ -44,8 +44,8 @@
           </div>
         </form>
       </div>
-    </div>
-    <!-- <table id="customers" v-if="!loading">
+    </div> -->
+    <table id="customers" v-if="!loading">
       <tr>
         <th>Flight Number</th>
         <th>Departure</th>
@@ -59,10 +59,10 @@
         <td>{{ flight.departure }}</td>
         <td>{{ flight.destination }}</td>
         <td>{{ flight.departure_time }}</td>
-        <td><button @click="">Get Detail</button></td>
+        <!-- <td><button @click="">Get Detail</button></td> -->
       </tr>
     </table>
-    <br> -->
+    <br>
 
   </div>
 </template>
@@ -147,24 +147,7 @@ export default {
           this.loading = false;
         });
     },
-    getDetail: function () {
-      this.loading = true;
-      axios.get('http://localhost:8000/info/all')
-        .then(response => {
-          console.log('Response:', response.data);
-          this.flights = response.data.airlines[1];
-          this.airlines = response.data.airlines[0];
-          console.log(response.data);
-          this.loading = false;
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          this.loading = false;
-        });
-    },
-    searchFlightInformation: function () {
 
-    }
   }
 }
 </script>

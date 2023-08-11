@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <div>
-    
+
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
@@ -17,18 +17,24 @@ import { RouterLink, RouterView } from 'vue-router'
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-           
+
             <RouterLink class="nav-link active" aria-current="page" to="/">Home</RouterLink>
           </li>
           <li class="nav-item">
-           
-           <RouterLink class="nav-link active" aria-current="page" to="/login">Login</RouterLink>
-         </li>
-         <li class="nav-item">
-           
-           <RouterLink class="nav-link active" aria-current="page" to="/list">About</RouterLink>
-         </li>
-          
+
+            <RouterLink class="nav-link active" aria-current="page" to="/login" v-if="!token">Login</RouterLink>
+            <RouterLink class="nav-link active" aria-current="page" to="/logout" v-else>Logout</RouterLink>
+          </li>
+
+          <li class="nav-item">
+
+            <RouterLink class="nav-link active" aria-current="page" to="/register">Register</RouterLink>
+          </li>
+          <li class="nav-item">
+
+            <RouterLink class="nav-link active" aria-current="page" to="/list">List</RouterLink>
+          </li>
+
         </ul>
       </div>
     </div>
@@ -49,6 +55,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-  
-</style>
+<style scoped></style>
+<script>
+
+</script>

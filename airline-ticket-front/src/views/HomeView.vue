@@ -49,7 +49,7 @@ export default {
         formData.append('destination', this.searchForm.destination);
         formData.append('departureTime', this.searchForm.departureTime);
         formData.append('seatType', this.searchForm.seatType);
-        console.log(window.localStorage.getItem('token'))
+      
         const headers = {
           'Content-Type': 'multipart/form-data',
           'Authorization': 'Bearer ' + window.localStorage.getItem('token')
