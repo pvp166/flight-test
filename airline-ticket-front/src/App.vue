@@ -67,7 +67,7 @@ export default {
     
   },
   mounted() {
-    
+    this.toggleLogin(!Boolean( window.localStorage.getItem('token')));
     // console.log(Boolean( window.localStorage.getItem('token')))
     console.log(this.login);
   }
